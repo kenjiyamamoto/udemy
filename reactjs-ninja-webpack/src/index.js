@@ -1,8 +1,9 @@
 'use strict'
 
+import Title from './app'
+
 var React = require('react')
 var ReactDOM = require('react-dom')
-var Title = require('./app')
 
 ReactDOM.render(
 	React.createElement(Title),
