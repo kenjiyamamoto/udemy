@@ -2,8 +2,9 @@
 
 const path = require('path')
 const webpack = require('webpack')
+const validate = require('webpack-validator')
 
-module.exports = {
+module.exports = validate({
 	devtool: 'source-map',
 
 	entry: [
@@ -24,13 +25,18 @@ module.exports = {
 	],
 
 	module: {
-		rules: [{
+		preLoaders: [{
 			test: /\.js$/,
 			exclude: /node_modules/,
 			include: /src/,
-			loader: 'babel-loader'
+			loader: 'standard'
+		}],
+
+		loaders: [{
+			test: /\.js$/,
+			exclude: /node_modules/,
+			include: /src/,
+			loader: 'babel'
 		}]
-	},
-	mode: 'development'
-	// mode: 'production'
-}
+	}
+})
